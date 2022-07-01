@@ -54,12 +54,16 @@ public class Main
          tempScan.close();
 
          for (int i =0; i < csvInfo.size(); i++){
-            String[] terms = csvInfo.get(i).split(","); 
+            String[] terms = csvInfo.get(i).split(",");
+            for (int j =0; j < terms.length; j++){
+                terms[j] = terms[j].replace("\\n", System.lineSeparator());
+                //     System.out.println(terms[j]);                
+            } 
             String info1 = terms[0];
             String info2 = terms[1];
             String info3 = terms[2];
             String info4 = terms[3]; 
-            // System.out.println(info1 + info2 + info3 + info4);
+            // System.out.println(info1 +" " + info2 +" "+ info3 +" " + info4);
             newContent = tempContent.replaceAll(var1,info1);
             newContent = newContent.replaceAll(var2,info2);
             newContent = newContent.replaceAll(var3,info3);
